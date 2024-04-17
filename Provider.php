@@ -40,6 +40,11 @@ class Provider extends AbstractProvider
     {
         return 'https://id.twitch.tv/oauth2/token';
     }
+	
+    protected function getRevokeUrl()
+    {
+        return 'https://id.twitch.tv/oauth2/revoke';
+    }
 
     /**
      * {@inheritdoc}
@@ -59,6 +64,15 @@ class Provider extends AbstractProvider
 
         return json_decode((string) $response->getBody(), true);
     }
+	
+	public function revokeToken(string $token) {
+		return $this->getHttpClient()->post($this->getRevokeUrl(), [
+			RequestOptions::FORM_PARAMS => [
+				'client_id' => $this->clientId,
+				'token' => $token
+			]
+		]);
+	}
 
     /**
      * {@inheritdoc}

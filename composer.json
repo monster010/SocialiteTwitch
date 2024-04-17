@@ -1,5 +1,5 @@
 {
-    "name": "socialiteproviders/twitch",
+    "name": "monster010/twitch",
     "description": "Twitch OAuth2 Provider for Laravel Socialite",
     "license": "MIT",
     "keywords": [
